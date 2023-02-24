@@ -15,8 +15,7 @@ class CheckAge
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $age = 20;
-        if ($age < 18) {
+        if ($request->age < 18) {
             return response()->json(['message' => 'you are too young']);
         }
         return $next($request);
