@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\CheckAge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,19 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/get', function () {
-    return view('hello', ['first_name' => 'Tamara']);
-})->middleware('check.age');
 
-Route::post('/post', function () {
-    return response()->json(['message' => 'post']);
-});
-Route::put('/put', function () {
-    return response()->json(['message' => 'put']);
-});
-Route::patch('/patch', function () {
-    return response()->json(['message' => 'patch']);
-});
-Route::delete('/delete', function () {
-    return response()->json(['message' => 'delete']);
-});
+Route::get('/get', [HomeController::class, 'index'])
+    ->middleware('check.age');
+Route::post('/post', [HomeController::class, 'store']);
+Route::put('/put', [HomeController::class, 'update']);
+Route::patch('/patch', [HomeController::class, 'update']);
+Route::delete('/delete', [HomeController::class, 'destroy']);
