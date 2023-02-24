@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckAge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/get', function () {
     return response()->json(['message' => 'get']);
-});
+})->middleware('check.age');
 Route::post('/post', function () {
     return response()->json(['message' => 'post']);
 });
