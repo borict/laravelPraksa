@@ -20,8 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/get', function () {
-    return response()->json(['message' => 'get']);
+    return view('hello', ['first_name' => 'Tamara']);
 })->middleware('check.age');
+
 Route::post('/post', function () {
     return response()->json(['message' => 'post']);
 });
