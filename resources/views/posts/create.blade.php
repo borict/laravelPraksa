@@ -3,7 +3,7 @@
 @section('title', 'Create New Post')
 
 @section('content')
-    <a href="/api/posts">Home</a><br><br>
+    <a href="/posts">Home</a><br><br>
     <h2>Create new post</h2>
     <form action="" method="POST">
         @csrf

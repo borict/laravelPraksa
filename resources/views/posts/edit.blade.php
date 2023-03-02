@@ -5,7 +5,7 @@
 @section('content')
 
     <div>
-        <a href="/api/posts">Home</a>
+        <a href="/posts">Home</a>
         <div>
             <h3>Edit Post</h3>
 
@@ -20,7 +20,7 @@
                     <br>
                     <div>
                         <label for="body">Post Body</label>
-                        <textarea id="body"name="body" rows="3" required></textarea>
+                        <textarea id="content"name="content" rows="3" required></textarea>
                     </div>
                 </div>
 

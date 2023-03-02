@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -23,35 +25,34 @@ class PostController extends Controller
     {
         return view('posts.create');
     }
-    public function store(Request $request)
+    public function store(PostRequest $request): RedirectResponse
     {
-        Post::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'user_id' => 1
-        ]);
-
-        return redirect('/api/posts');
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->user_id = 1;
+        $post->save();
+        return redirect()->route('all-posts');
     }
 
     public function edit()
     {
         return view('posts.edit');
     }
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id): RedirectResponse
     {
         $post = Post::find($id);
         $post->title = $request->title;
-        $post->content = $request->body;
+        $post->content = $request->content;
         $post->save();
 
-        return redirect('/api/posts');
+        return redirect()->route('all-posts');
     }
 
     public function destroy($id)
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/api/posts');
+        return redirect()->route('all-posts');
     }
 }
