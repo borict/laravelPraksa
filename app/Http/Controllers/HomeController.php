@@ -6,20 +6,23 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
-        return view('hello', ['first_name' => 'Tamara']);
-    }
-    public function store()
-    {
-        return response()->json(['message' => 'post']);
-    }
-    public function update()
-    {
-        return response()->json(['message' => 'update']);
-    }
-    public function destroy()
-    {
-        return response()->json(['message' => 'delete']);
+        return view('home');
     }
 }
