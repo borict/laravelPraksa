@@ -35,6 +35,7 @@ class PostController extends Controller
         return redirect()->route('all-posts');
     }
 
+
     public function edit()
     {
         return view('posts.edit');
