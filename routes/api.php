@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\JwtMiddleware;
-
+use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +45,8 @@ Route::group([
 
     Route::controller(PostController::class)->group(function () {
         Route::get('posts', 'index')->name('all-posts');
-        Route::post('create', 'store')->name('add-post');
         Route::get('posts/{id}', 'show')->name('single-post');
+        Route::post('create', 'store')->name('add-post');
         Route::put('posts/{id}', 'update')->name('edit-post');
         Route::delete('posts/{id}', 'destroy')->name('delete-post');
     });
