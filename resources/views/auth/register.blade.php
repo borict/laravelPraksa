@@ -54,17 +54,11 @@
                                     <input id="password" type="password"
                                         class="form-control  @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
-                                    {{-- <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password"> --}}
-
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-
-
                                 </div>
                             </div>
 
@@ -82,7 +76,6 @@
                             @enderror
 
                             <div class="row mb-3">
-                                {{-- <div class="row mb-3"> --}}
                                 <label for="country" class="col-md-4 col-form-label text-md-end">Country:</label>
                                 <div class="col-mb-6" style="width: 100%">
 
@@ -101,15 +94,7 @@
 
                                     </select>
                                 </div>
-                                {{-- </div> --}}
                             </div>
-
-
-
-
-
-
-
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -117,7 +102,6 @@
                                     </button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

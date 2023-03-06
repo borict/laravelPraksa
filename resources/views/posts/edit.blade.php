@@ -3,9 +3,9 @@
 @section('title', 'Edit Post')
 
 @section('content')
-
     <div>
         <a href="/posts">Home</a>
+
         <div>
             <h3>Edit Post</h3>
 
@@ -33,4 +33,5 @@
                 </div>
             </form>
         </div>
+
     </div>

@@ -5,7 +5,11 @@
 @section('content')
     <h1>All posts</h1>
     <a href="/logout">Log out</a><br>
-    <a href="/create">Create new post</a>
+
+    @can('create', Post::class)
+        <a href="/create">Create new post</a>
+    @endcan
+
     <ul>
         @foreach ($posts as $post)
             <li>
