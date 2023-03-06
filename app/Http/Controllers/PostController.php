@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use Exception;
 use Illuminate\Http\RedirectResponse;
+use App\Exceptions\PostNotFoundException;
 
 class PostController extends Controller
 {
@@ -15,8 +17,12 @@ class PostController extends Controller
     }
     public function show($id)
     {
-        $post = Post::find($id);
-        dd($post);
+        try {
+            $post = Post::where(['id' => $id])->firstOrFail();
+        } catch (Exception $e) {
+            throw new PostNotFoundException();
+        }
+
         return view('posts.show', compact('post'));
     }
     public function create()
@@ -39,7 +45,7 @@ class PostController extends Controller
     {
         return view('posts.edit');
     }
-    public function update(PostRequest $request, string $postId): RedirectResponse
+    public function update(PostRequest $request, $postId): RedirectResponse
     {
         $post = Post::find($postId);
 
@@ -51,7 +57,7 @@ class PostController extends Controller
 
         return redirect()->route('all-posts');
     }
-    public function destroy(string $postId)
+    public function destroy($postId)
     {
         $post = Post::find($postId);
 
